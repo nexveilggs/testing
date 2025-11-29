@@ -1531,7 +1531,7 @@ function Window:CreateTopBar()
         BackgroundTransparency = 1,
         Text = self.PrefixIcon,
         Font = Enum.Font.GothamBold,
-        TextSize = IsMobile and 24 : 22,
+        TextSize = IsMobile and 24 or 22,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Parent = logoContainer
     })
@@ -1646,7 +1646,7 @@ function Window:CreateControlButton(parent, text, position, callback, tooltip, i
         BorderSizePixel = 0,
         Text = text,
         Font = Enum.Font.GothamBold,
-        TextSize = IsMobile and 22 : 20,
+        TextSize = IsMobile and 22 or 20,
         TextColor3 = theme.TextPrimary,
         AutoButtonColor = false,
         Parent = parent
@@ -1696,7 +1696,7 @@ end
 function Window:CreateNavigationBar()
     local theme = self.Theme
     local navWidth = IsMobile and 0 or 175
-    local navHeight = IsMobile and 70 : 0
+    local navHeight = IsMobile and 70 or 0
     
     self.NavigationBar = Utility:Create("ScrollingFrame", {
         Name = "NavigationBar",
@@ -1739,9 +1739,9 @@ function Window:CreateContentContainer()
     local theme = self.Theme
     
     local contentPosX = IsMobile and 10 or 195
-    local contentPosY = IsMobile and 150 : 65
-    local contentWidth = IsMobile and -20 : -205
-    local contentHeight = IsMobile and -185 : -95
+    local contentPosY = IsMobile and 150 or 65
+    local contentWidth = IsMobile and -20 or -205
+    local contentHeight = IsMobile and -185 or -95
     
     self.ContentContainer = Utility:Create("Frame", {
         Name = "ContentContainer",
@@ -1936,8 +1936,8 @@ function Window:CreateTab(config)
     setmetatable(Tab, {__index = self})
     
     -- Tab Button
-    local buttonWidth = IsMobile and 130 : 0
-    local buttonHeight = IsMobile and 0 : 50
+    local buttonWidth = IsMobile and 130 or 0
+    local buttonHeight = IsMobile and 0 or 50
     
     Tab.Button = Utility:Create("TextButton", {
         Name = tabName .. "Button",
@@ -1954,7 +1954,7 @@ function Window:CreateTab(config)
     Utility:AddCorner(Tab.Button, 10)
     
     -- Tab Icon
-    local iconSize = IsMobile and 26 : 22
+    local iconSize = IsMobile and 26 or 22
     Tab.IconLabel = Utility:Create("TextLabel", {
         Size = UDim2.new(0, iconSize, 0, iconSize),
         Position = IsMobile and UDim2.new(0, 14, 0.5, 0) or UDim2.new(0, 14, 0, 12),
@@ -1962,7 +1962,7 @@ function Window:CreateTab(config)
         BackgroundTransparency = 1,
         Text = tabIcon,
         Font = Enum.Font.GothamBold,
-        TextSize = IsMobile and 20 : 18,
+        TextSize = IsMobile and 20 or 18,
         TextColor3 = self.Theme.TextSecondary,
         Parent = Tab.Button
     })
@@ -1974,7 +1974,7 @@ function Window:CreateTab(config)
         BackgroundTransparency = 1,
         Text = tabName,
         Font = Enum.Font.GothamSemibold,
-        TextSize = IsMobile and 14 : 13,
+        TextSize = IsMobile and 14 or 13,
         TextColor3 = self.Theme.TextSecondary,
         TextXAlignment = Enum.TextXAlignment.Left,
         TextTruncate = Enum.TextTruncate.AtEnd,
@@ -2026,7 +2026,7 @@ function Window:CreateTab(config)
         Position = UDim2.new(0, 12, 0, 12),
         BackgroundTransparency = 1,
         BorderSizePixel = 0,
-        ScrollBarThickness = IsMobile and 3 : 5,
+        ScrollBarThickness = IsMobile and 3 or 5,
         ScrollBarImageColor3 = self.Theme.Accent,
         ScrollBarImageTransparency = 0.5,
         CanvasSize = UDim2.new(0, 0, 0, 0),
@@ -2192,7 +2192,7 @@ function Window:AddElementMethods(tab)
             BackgroundTransparency = 1,
             Text = name,
             Font = Enum.Font.GothamBold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.Accent,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = section
@@ -2223,7 +2223,7 @@ function Window:AddElementMethods(tab)
             BackgroundTransparency = 1,
             Text = text,
             Font = Enum.Font.Gotham,
-            TextSize = IsMobile and 14 : 13,
+            TextSize = IsMobile and 14 or 13,
             TextColor3 = theme.TextSecondary,
             TextXAlignment = Enum.TextXAlignment.Left,
             TextWrapped = true,
@@ -2255,7 +2255,7 @@ function Window:AddElementMethods(tab)
         
         local buttonFrame = Utility:Create("Frame", {
             Name = "ButtonFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 48 : 45),
+            Size = UDim2.new(1, 0, 0, IsMobile and 48 or 45),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -2280,7 +2280,7 @@ function Window:AddElementMethods(tab)
             BackgroundTransparency = 1,
             Text = buttonName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = buttonFrame
@@ -2293,7 +2293,7 @@ function Window:AddElementMethods(tab)
             BackgroundTransparency = 1,
             Text = "→",
             Font = Enum.Font.GothamBold,
-            TextSize = IsMobile and 18 : 16,
+            TextSize = IsMobile and 18 or 16,
             TextColor3 = theme.Accent,
             Parent = buttonFrame
         })
@@ -2357,7 +2357,7 @@ end
         
         local toggleFrame = Utility:Create("Frame", {
             Name = "ToggleFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48),
+            Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -2374,7 +2374,7 @@ end
             BackgroundTransparency = 1,
             Text = toggleName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             TextWrapped = true,
@@ -2481,7 +2481,7 @@ end
         
         local sliderFrame = Utility:Create("Frame", {
             Name = "SliderFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 75 : 70),
+            Size = UDim2.new(1, 0, 0, IsMobile and 75 or 70),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -2499,7 +2499,7 @@ end
             BackgroundTransparency = 1,
             Text = sliderName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = sliderFrame
@@ -2514,7 +2514,7 @@ end
             BorderSizePixel = 0,
             Text = tostring(default) .. suffix,
             Font = Enum.Font.GothamBold,
-            TextSize = IsMobile and 14 : 13,
+            TextSize = IsMobile and 14 or 13,
             TextColor3 = theme.Accent,
             Parent = sliderFrame
         })
@@ -2640,7 +2640,7 @@ end
         
         local dropdownFrame = Utility:Create("Frame", {
             Name = "DropdownFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48),
+            Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -2654,7 +2654,7 @@ end
         
         -- Main Button
         local dropdownButton = Utility:Create("TextButton", {
-            Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48),
+            Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48),
             BackgroundTransparency = 1,
             Text = "",
             AutoButtonColor = false,
@@ -2667,7 +2667,7 @@ end
             BackgroundTransparency = 1,
             Text = dropdownName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = dropdownButton
@@ -2679,7 +2679,7 @@ end
             BackgroundTransparency = 1,
             Text = default,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 14 : 13,
+            TextSize = IsMobile and 14 or 13,
             TextColor3 = theme.Accent,
             TextXAlignment = Enum.TextXAlignment.Right,
             TextTruncate = Enum.TextTruncate.AtEnd,
@@ -2701,7 +2701,7 @@ end
         -- Options Container
         local optionsContainer = Utility:Create("ScrollingFrame", {
             Size = UDim2.new(1, 0, 0, 0),
-            Position = UDim2.new(0, 0, 0, IsMobile and 52 : 48),
+            Position = UDim2.new(0, 0, 0, IsMobile and 52 or 48),
             BackgroundColor3 = theme.Quaternary,
             BackgroundTransparency = 0.1,
             BorderSizePixel = 0,
@@ -2735,7 +2735,7 @@ end
                 BorderSizePixel = 0,
                 Text = option,
                 Font = Enum.Font.Gotham,
-                TextSize = IsMobile and 14 : 13,
+                TextSize = IsMobile and 14 or 13,
                 TextColor3 = option == selected and theme.Accent or theme.TextSecondary,
                 AutoButtonColor = false,
                 LayoutOrder = i,
@@ -2813,7 +2813,7 @@ end
                 -- Close dropdown
                 isOpen = false
                 Utility:Tween(dropdownFrame, {
-                    Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48)
+                    Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48)
                 }, 0.3, Enum.EasingStyle.Quad)
                 Utility:Tween(arrowIcon, {Rotation = 0}, 0.3)
                 task.wait(0.3)
@@ -2834,12 +2834,12 @@ end
                 optionsContainer.Visible = true
                 
                 Utility:Tween(dropdownFrame, {
-                    Size = UDim2.new(1, 0, 0, (IsMobile and 52 : 48) + contentHeight + 4)
+                    Size = UDim2.new(1, 0, 0, (IsMobile and 52 or 48) + contentHeight + 4)
                 }, 0.3, Enum.EasingStyle.Quad)
                 Utility:Tween(arrowIcon, {Rotation = 180}, 0.3)
             else
                 Utility:Tween(dropdownFrame, {
-                    Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48)
+                    Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48)
                 }, 0.3, Enum.EasingStyle.Quad)
                 Utility:Tween(arrowIcon, {Rotation = 0}, 0.3)
                 task.wait(0.3)
@@ -2886,7 +2886,7 @@ end
         
         local textBoxFrame = Utility:Create("Frame", {
             Name = "TextBoxFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 80 : 75),
+            Size = UDim2.new(1, 0, 0, IsMobile and 80 or 75),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -2903,22 +2903,22 @@ end
             BackgroundTransparency = 1,
             Text = textBoxName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = textBoxFrame
         })
         
         local textBox = Utility:Create("TextBox", {
-            Size = UDim2.new(1, -30, 0, IsMobile and 38 : 36),
-            Position = UDim2.new(0, 15, 1, -(IsMobile and 46 : 44)),
+            Size = UDim2.new(1, -30, 0, IsMobile and 38 or 36),
+            Position = UDim2.new(0, 15, 1, -(IsMobile and 46 or 44)),
             BackgroundColor3 = theme.InputBackground,
             BackgroundTransparency = 0.2,
             BorderSizePixel = 0,
             Text = default,
             PlaceholderText = placeholder,
             Font = Enum.Font.Gotham,
-            TextSize = IsMobile and 14 : 13,
+            TextSize = IsMobile and 14 or 13,
             TextColor3 = theme.TextPrimary,
             PlaceholderColor3 = theme.TextTertiary,
             ClearTextOnFocus = false,
@@ -3002,7 +3002,7 @@ end
         
         local keybindFrame = Utility:Create("Frame", {
             Name = "KeybindFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48),
+            Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -3019,7 +3019,7 @@ end
             BackgroundTransparency = 1,
             Text = keybindName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = keybindFrame
@@ -3033,7 +3033,7 @@ end
             BorderSizePixel = 0,
             Text = default.Name,
             Font = Enum.Font.GothamBold,
-            TextSize = IsMobile and 13 : 12,
+            TextSize = IsMobile and 13 or 12,
             TextColor3 = theme.Accent,
             AutoButtonColor = false,
             Parent = keybindFrame
@@ -3108,7 +3108,7 @@ end
         
         local colorFrame = Utility:Create("Frame", {
             Name = "ColorPickerFrame",
-            Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48),
+            Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48),
             BackgroundColor3 = theme.Tertiary,
             BackgroundTransparency = theme.ElementTransparency,
             BorderSizePixel = 0,
@@ -3126,7 +3126,7 @@ end
             BackgroundTransparency = 1,
             Text = colorPickerName,
             Font = Enum.Font.GothamSemibold,
-            TextSize = IsMobile and 15 : 14,
+            TextSize = IsMobile and 15 or 14,
             TextColor3 = theme.TextPrimary,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = colorFrame
@@ -3151,7 +3151,7 @@ end
         -- Color Picker Panel
         local pickerPanel = Utility:Create("Frame", {
             Size = UDim2.new(1, -20, 0, 0),
-            Position = UDim2.new(0, 10, 0, IsMobile and 60 : 56),
+            Position = UDim2.new(0, 10, 0, IsMobile and 60 or 56),
             BackgroundColor3 = theme.Quaternary,
             BackgroundTransparency = 0.1,
             BorderSizePixel = 0,
@@ -3333,11 +3333,11 @@ end
             if pickerOpen then
                 pickerPanel.Visible = true
                 Utility:Tween(colorFrame, {
-                    Size = UDim2.new(1, 0, 0, (IsMobile and 60 : 56) + 164)
+                    Size = UDim2.new(1, 0, 0, (IsMobile and 60 or 56) + 164)
                 }, 0.3, Enum.EasingStyle.Quad)
             else
                 Utility:Tween(colorFrame, {
-                    Size = UDim2.new(1, 0, 0, IsMobile and 52 : 48)
+                    Size = UDim2.new(1, 0, 0, IsMobile and 52 or 48)
                 }, 0.3, Enum.EasingStyle.Quad)
                 task.wait(0.3)
                 pickerPanel.Visible = false
@@ -3360,7 +3360,6 @@ end
         }
     end
     
-end
 
 -- ════════════════════════════════════════════════════════════════
 --                     NOTIFICATION SYSTEM
